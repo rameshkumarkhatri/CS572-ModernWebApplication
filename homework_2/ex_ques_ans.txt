@@ -1,0 +1,15 @@
+Q1. Explain why do we want sometimes to use setImmediate instead of using setTimeout?
+Ans: setImmediate callbacks are placed in Check queue and called after I/O queue callbacks are finished or reached to maximum limit. While setTimeout callbacks are placed in Timer queue and it will be called after I/O callbacks as well as check callbacks. But this also depends on the order in which they are defined and in which phase event loop is.
+
+
+Q2. Explain the difference between process.nextTick and setImmediate?
+Process.nextTick() places callbacks in nextTick queue that is not part of event loop. All callbacks in nextTick queue has priority and will be processed before event loop continue process other queues. So setImmediate callbacks will be processed after nextTick queue end processing all its callbacks.
+
+Q3. Name 10 core modules that Node provides by default?
+Ans: http, url, querystring, path, fs, util, crypto, dns, os, vm
+
+
+Others:
+Inspector, Query Strings, Path, Process, Punycode,
+ REPL, Readline, Net, OS, Utilities, 
+ UDP/Datagram, Worker Threads, String Decorder, Trace Events
