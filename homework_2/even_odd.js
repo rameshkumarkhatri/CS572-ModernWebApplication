@@ -1,19 +1,22 @@
-Array.prototype.even = function () {
-    // var even = [];
-    // for (const num of this)
-    //     if(num%2 ==0) even.concat(num);
-    // console.log(even);
 
+// using timout
+Array.prototype.even = function () {
+    
     setTimeout( () => { console.log(this.filter (num => num%2==0))});
 }
 
+// using promise
 Array.prototype.odd = function () {
-    setTimeout( () => { 
-        console.log(this.filter (num => num%2!=0))});
+    var arr = this;
+    const promise = new Promise(function(resolve, reject){
+        resolve(arr.filter (num => num%2!=0))
+    });
+    return promise;
 }
 console.log('Start');
 [1,2,3,4,5,6,7,8].even();
-[1,2,3,4,5,6,7,8].odd();
+var odds = [1,2,3,4,5,6,7,8].odd();
+odds.then(function(result){console.log(result)}, function(error) {console.log(error)})
 console.log('End');
 
 // as setTimeout, setInterval are asynchronous
