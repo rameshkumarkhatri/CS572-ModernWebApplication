@@ -23,6 +23,14 @@ promise().then(function(result){console.log(result)}, function(error) {console.l
 
 // using async and await
 
+(async function asyncAwaitUsingPromise() {
+    try{
+        const ip = await promise();
+        console.log(ip);
+    }catch(error ){
+        console.log(error);
+    }
+})();
 
 
 
