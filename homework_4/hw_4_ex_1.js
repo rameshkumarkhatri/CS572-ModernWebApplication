@@ -19,6 +19,8 @@ const ob = Observable.create(observer => {
         observer.next('System is checked successfully');
     }
 
+    observer.complete();
+
 });
 
 ob.subscribe(value => console.log(value));

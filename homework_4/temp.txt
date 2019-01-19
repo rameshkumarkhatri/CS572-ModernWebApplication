@@ -1,0 +1,38 @@
+const {Observable} = require('rxjs')
+
+const fs = require('fs')
+const http = require('http')
+const {fork} = require('child_process')
+
+const url = require('url')
+const querystring = require('querystring');
+
+
+
+var observer = Observable.create(observe => {
+
+});
+
+
+
+
+var server = http.createServer((req, res) => {
+    const urlParsed = url.parse(req.url);
+    // urlParsed.query.search('url');
+    console.log(urlParsed.query);
+    let pairs = querystring.parse(urlParsed.query);
+    console.log(pairs);
+    
+    if(pairs.url){
+        console.log(pairs.url);
+
+        const childProcess = fork("childex2.js");
+        childProcess.send("start");
+        childProcess.on("message", data =>{
+            res.end(data);
+        })
+        
+    }
+    // res.end(urlParsed);
+}).listen(1010, console.log('server listen on 1010'))
+
