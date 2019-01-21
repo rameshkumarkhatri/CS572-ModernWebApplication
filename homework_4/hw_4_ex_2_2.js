@@ -7,9 +7,23 @@ const readFile = ()=>{
 };
 process.on("message", (msg)=>{
     
-    const data = readFile();
+    const chunks = [];
+    console.log('in on message method');
+    process.stdin.setEncoding('utf8');
+    var readStream= fs.createReadStream(path.join(__dirname, 'temp.txt'));
+    // readStream.pipe(process.stdout); // for console writing
+    
+    readStream.on('data', (buf) => {
+        console.log(buf);
+          process.send(buf.toString());
+        });
+        readStream.on('end', () => process.send('end'));
+    // end(()=> console.log('end stream'));
+    
     console.log('message function data :'+msg);
-    process.send(data);
+
+    // const data = readFile();
+    // process.send(readStream);
 });
 
 
