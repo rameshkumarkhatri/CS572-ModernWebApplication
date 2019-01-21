@@ -1,0 +1,12 @@
+{
+    "isbn":"",
+    "author": ["", ""],
+    "tags": ["", ""],
+    "borrowed": {
+        "student":{
+            "name":"",
+            "contact":""
+        },
+        "due_date": ""
+    }
+}
