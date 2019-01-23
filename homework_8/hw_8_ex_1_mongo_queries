@@ -1,0 +1,50 @@
+./mongo db
+use homework8
+
+1.  db.restaurants.find({})
+
+2.   db.restaurants.find({}, {grades:0, address:0})
+
+3.   db.restaurants.find({}, {_id:0, grades:0, address:0})
+
+4.   db.restaurants.find({}, {_id:0, name:1, cuisine:1, name:1, restaurant_id:1, 'address.zipcode':1})
+
+5.   db.restaurants.find({district: 'Bronx'})
+
+6.   db.restaurants.find({district: 'Bronx'}).limit(5)
+    // db.restaurants.find({district: 'Bronx'}, {$limit:5}) // this does not work it will give ids continously
+
+7.   db.restaurants.find({district: 'Bronx'}).limit(5).skip(5)
+
+8.   db.restaurants.find({'address.coord':{$lt:-95.754168}})
+
+9.   db.restaurants.find({cuisine: {$ne:'American'}, grades: {$gt: 70},'address.coord':{$lt:-95.754168}})
+
+10.   db.restaurants.find({name: {$regex:'^Wil'}}, {_id:0, name:1, cuisine:1, name:1, restaurant_id:1, district:1})    // for first 3 words
+
+11.  db.restaurants.find({name: {$regex:'ces$'}}, {_id:0, name:1, cuisine:1, name:1, restaurant_id:1, district:1}) // for last 3 words 
+
+12.  db.restaurants.find({name: {$regex:'ces'}}, {_id:0, name:1, cuisine:1, name:1, restaurant_id:1, district:1})
+
+13. db.restaurants.find({district:'Bronx', cuisine: {$in: ['American ', 'Chinese']}})
+
+14.  db.restaurants.find({district: {$in: ['Staten Island', 'Queens', 'Bronx', 'Brooklyn']}}, {_id:0, name:1, cuisine:1, name:1, restaurant_id:1, district:1})
+
+15. db.restaurants.find({district: {$nin: ['Staten Island', 'Queens', 'Bronx', 'Brooklyn']}}, {_id:0, name:1, cuisine:1, name:1, restaurant_id:1, district:1})
+
+16. db.restaurants.find({"grades.score":{$not: {$lt: 10}}}, {_id:0, name:1, cuisine:1, name:1, restaurant_id:1, district:1}) // which is not more than 10 grade score
+
+17. db.restaurants.find({"address.coord.$":{$or [$gt: 42, $lte: 52]}}}, {_id:0, name:1, address:1, name:1, restaurant_id:1})
+{"address.coord.$":{$or: [{$gt: 42}, {$lt: 52}]}}
+
+18. db.restaurants.find({}).sort({name:1})
+
+19. db.restaurants.find({}).sort({name:-1})
+
+20. db.restaurants.find({}).sort({cuisine:1, district:-1})
+
+21. db.restaurants.find({'address.street': {$exists: true}}) // if street exist or not
+
+22. db.restaurants.find({'address.coord': {$exists: true,  $type: "double"}}) 
+
+23. db.restaurants.find({name: {$regex: "^Mad"}}, {_id:0, name:1, address:1, name:1, district:1}) // its not working
