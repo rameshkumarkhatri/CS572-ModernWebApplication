@@ -1,0 +1,10 @@
+1. db.cities.aggregate([{$match:{state:"IA"}}, {$group:{_id:"$_id"}}, {$project:{_id:0,zip_code:"$_id"}}])
+
+2. db.cities.aggregate([{$match:{pop: {$gt: 1000}}}, {$group:{_id:"$_id"}}, {$project:{_id:0,zip_code:"$_id"}}])
+
+3. db.cities.aggregate([{$group : {_id: {city: "$city", state: "$state"}, zip_code_count:{$sum:1}}}, {$match: { zip_code_count: {$gt:1}}}, {$project: {_id:0, city:"$_id.city", zip_counts:"$zip_code_count", state:"$_id.state"}}, {$sort: {state:1, city:1}}])
+
+//db.cities.aggregate([{$group : {_id: "$city", state: {$first: "$state"}, zip_code_count:{$sum:1}}}, {$match: { zip_code_count: {$gt:1}}}, {$project: {_id:0, city:"$_id", zip_counts:"$zip_code_count", state:1}}, {$sort: {state:1, city:1}}])
+
+
+4. db.cities.aggregate([{$group : {_id: {city: "$city", state: "$state"}, population: {$sum: "$pop"}}}, {$project: {_id:0, city: "$_id.city", state: "$_id.state", population: "$population"}},{$sort: {state: 1, population:1}}, {$group: {_id: "$state", population:{$first:"$population"}, city: {$first: "$city"}}}, {$sort: {population:1, "_id":1}}])
