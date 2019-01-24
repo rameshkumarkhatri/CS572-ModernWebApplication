@@ -1,0 +1,2 @@
+On basis of indexes we need to make index on authors and tags which is best.
+Also indexes of tags and authors.
