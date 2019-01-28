@@ -1,0 +1,16 @@
+{
+  "name": "homework_10",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hw_10_ex_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ramesh": "webpack ./hw_10_ex_1.js -o ./bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  }
+}
