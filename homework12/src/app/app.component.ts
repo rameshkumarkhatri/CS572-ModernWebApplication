@@ -16,7 +16,7 @@ import { template } from '@angular/core/src/render3';
 export class AppComponent {
   title = 'homework12';
 
-  public counter:number = 1;
+  public counter:number = 0;
 
 
   counterChange(counterValue) {
