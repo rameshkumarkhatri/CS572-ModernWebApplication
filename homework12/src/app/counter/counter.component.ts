@@ -13,7 +13,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CounterComponent implements OnInit {
   // private counterValue: number = 0;
-  @Input('counter') counterValue: number =0;
+  
+  @Input('counter') counterValue: number;
 
   increment() {
     this.counterValue++;
@@ -35,6 +36,8 @@ export class CounterComponent implements OnInit {
   ngOnInit() {
     console.log("nginit counter "+" counterValue "+this.counterValue);
     // this.counterValue = this.counter;
+    this.emitCounterValue();
+
   }
 
 

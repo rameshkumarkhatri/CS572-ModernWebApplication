@@ -8,7 +8,7 @@ import { template } from '@angular/core/src/render3';
   template: `
   <p>
         Counter Component:
-        <app-counter (counterEmitter)="counterChange($event)">></app-counter>
+        <app-counter (counterEmitter)="counterChange($event)" [counter]="9" ></app-counter>
       </p>
       <p>Component Counter Value:{{counter}}</p>
   `
@@ -16,9 +16,9 @@ import { template } from '@angular/core/src/render3';
 export class AppComponent {
   title = 'homework12';
 
-  public counter:number = 0;
+  public counter:number;
 
-
+  
   counterChange(counterValue) {
     this.counter = counterValue;
     console.log("counterChange method");
