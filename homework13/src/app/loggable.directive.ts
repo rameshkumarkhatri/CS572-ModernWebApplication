@@ -1,14 +1,14 @@
-import { Directive , HostListener} from '@angular/core';
+import { Directive , HostListener, ElementRef} from '@angular/core';
 
 @Directive({
   selector: '[appLoggable]'
 })
 export class LoggableDirective {
 
-  constructor() { }
+  constructor(private elementRef: ElementRef) { }
 
   @HostListener("dblclick") onDoubleClick(){
-    console.log('DIV element has been clicked');
+    console.log(this.elementRef.nativeElement+' element has been clicked');
   }
   
 

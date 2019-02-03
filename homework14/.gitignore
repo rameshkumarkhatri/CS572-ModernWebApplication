@@ -42,8 +42,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-
-/samples
-/angularProject
-/angularSamples
