@@ -32,8 +32,7 @@ export class AppModule {
         let arrayObject = JSON.parse(JSON.stringify(response));
         console.log(arrayObject['results'])
         dataService.saveCacheData(arrayObject);
-        localStorage.setItem('data',arrayObject['results']);
-        localStorage.setItem('data_object',JSON.stringify(response));
+        
       },
       (error) => {
         console.log("error "+error);
